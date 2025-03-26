@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import React from 'react';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import './App.css';
+import './index.css';
+import './styles.css';
+import Layout from './components/Layout/Layout';
+import HomePage from './components/Pages/HomePage';
+import CakesPage from './components/Pages/CakePage';
+import BeveragesPage from './components/Pages/BeveragesPage';
+import GiftsPage from './components/Pages/GiftsPage';
+import NotFoundPage from './components/Pages/NotFoundPage';
+import ProductList from './components/Pages/ProductList';
+import ContactForm from './components/Pages/ContactForm';
+import ImageManager from './components/ProductCard/ImageManager';
+import { ProductViewerProvider } from './components/ProductCard/ProductViewerProvider';
+import { CartProvider } from './components/Pages/ProductsSection/CartContext';
+
+const router = createBrowserRouter([
+    {
+        element: (
+            <Layout>
+                <CartProvider>
+                    <ProductViewerProvider>
+                        <Outlet />
+                    </ProductViewerProvider>
+                </CartProvider>
+            </Layout>
+        ),
+        children: [
+            { path: "/", element: <HomePage /> },
+            { path: "/cakes", element: <CakesPage /> },
+            { path: "/beverages", element: <BeveragesPage /> },
+            { path: "/gifts", element: <GiftsPage /> },
+            { path: "/products", element: <ProductList /> },
+            { path: "/contact", element: <ContactForm /> },
+            { path: "/upload", element: <ImageManager /> },
+            { path: "*", element: <NotFoundPage /> },
+        ],
+    },
+]);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return <RouterProvider router={router} />;
 }
 
 export default App;

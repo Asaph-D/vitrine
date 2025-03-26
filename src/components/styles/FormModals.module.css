@@ -1,0 +1,224 @@
+/* Section des boutons de formulaire */
+.formButtonsSection {
+    padding: 5rem 1.5rem;
+    background-color: #fff5eb;
+    text-align: center;
+    position: relative;
+  }
+  
+  .formButtonsSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #ff7a4a 0%, #ffa15e 100%);
+  }
+  
+  .formButtonsContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .sectionTitle {
+    color: #3a3a3a;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .sectionDescription {
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .formButtonsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .formButton {
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-width: 200px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contactButton {
+    background-color: #ff7a4a;
+    color: white;
+  }
+  
+  .testimonialButton {
+    background-color: white;
+    color: #ff7a4a;
+    border: 2px solid #ff7a4a;
+  }
+  
+  .formButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .contactButton:hover {
+    background-color: #e86a3a;
+  }
+  
+  .testimonialButton:hover {
+    background-color: #ffece0;
+  }
+  
+  .formButton:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .formButton::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 1;
+  }
+  
+  .formButton:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  /* Styles pour les modaux */
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+  }
+  
+  .modalContent {
+    background-color: #fff;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(20px);
+    animation: slideUp 0.4s forwards;
+  }
+  
+  .modalHeader {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+  }
+  
+  .modalTitle {
+    font-size: 1.5rem;
+    color: #3a3a3a;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .modalCloseButton {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    z-index: 1;
+  }
+  
+  .modalCloseButton:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #ff7a4a;
+  }
+  
+  .modalBody {
+    padding: 2rem;
+    overflow-y: auto;
+    max-height: calc(90vh - 80px);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(20px); }
+    to { transform: translateY(0); }
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .formButtonsWrapper {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .formButton {
+      width: 100%;
+      max-width: 300px;
+    }
+    
+    .modalContent {
+      width: 95%;
+      max-height: 80vh;
+    }
+    
+    .modalHeader {
+      padding: 1rem 1.5rem;
+    }
+    
+    .modalBody {
+      padding: 1.5rem;
+    }
+  }
+  
+  /* Modifier le style des formulaires quand ils sont dans le modal */
+  .modalBody form {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }

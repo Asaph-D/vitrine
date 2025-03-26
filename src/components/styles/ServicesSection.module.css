@@ -1,0 +1,182 @@
+.servicesSection {
+    padding: 6rem 1.5rem;
+    background-color: #fff;
+    position: relative;
+  }
+  
+  .servicesSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #ff7a4a 0%, #ffa15e 100%);
+  }
+  
+  .servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 2.5rem auto 0;
+  }
+  
+  .serviceCard {
+    background-color: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    border: 1px solid #f0f0f0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .serviceCard:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px -10px rgba(255, 122, 74, 0.15);
+    border-color: #ffece0;
+  }
+  
+  .serviceCard:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff7a4a 0%, #ffa15e 100%);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 0.4s ease;
+  }
+  
+  .serviceCard:hover:before {
+    transform: scaleX(1);
+  }
+  
+  .serviceIconWrapper {
+    width: 100px;
+    height: 100px;
+    background-color: #fff5eb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.75rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px -6px rgba(255, 122, 74, 0.2);
+  }
+  
+  .serviceCard:hover .serviceIconWrapper {
+    background-color: #ff7a4a;
+  }
+  
+  .serviceIcon {
+    width: 50px;
+    height: 50px;
+    color: #ff7a4a;
+    transition: all 0.3s ease;
+  }
+  
+  .serviceCard:hover .serviceIcon {
+    color: #fff;
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .sectionTitle {
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #7d3c03;
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+  
+  .sectionTitle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #ff7a4a;
+  }
+  
+  
+  .serviceCard:hover .serviceTitle {
+    color: #ff7a4a;
+  }
+  
+  .serviceDescription {
+    color: #666;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+  
+  .serviceLinkWrapper {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  .serviceLink {
+    display: inline-block;
+    color: #ff7a4a;
+    font-weight: 600;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .serviceLink:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #ff7a4a;
+    transition: width 0.3s ease;
+  }
+  
+  .serviceCard:hover .serviceLink:after {
+    width: 40%;
+  }
+  
+  @media (max-width: 768px) {
+    .servicesGrid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+  
+    .serviceCard {
+      padding: 2rem 1.5rem;
+    }
+  
+    .serviceIconWrapper {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .serviceIcon {
+      width: 40px;
+      height: 40px;
+    }
+  
+    .serviceTitle {
+      font-size: 1.4rem;
+    }
+  }
+  

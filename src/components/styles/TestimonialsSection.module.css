@@ -1,0 +1,217 @@
+/* Styles améliorés pour la section témoignages avec beaucoup de données */
+.testimonialsSection {
+  padding: 3rem 1rem;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 80px; /* Pour le défilement vers cette section */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.testimonialsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.testimonialCard {
+  background-color: #fff5eb;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 300px;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease, 
+              opacity 0.5s ease-in-out;
+  border-left: 3px solid #ff7a4a;
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: transform, opacity;
+}
+
+.testimonialCardVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonialCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Étoiles */
+.stars {
+  margin-bottom: 0.5rem;
+  color: #ff7a4a;
+  font-size: 0.8rem;
+  display: flex;
+}
+
+.star {
+  margin-right: 1px;
+  opacity: 0.3;
+  transition: opacity 0.2s ease;
+}
+
+.activeStar {
+  opacity: 1;
+}
+
+.testimonialText {
+  font-style: italic;
+  color: #666;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.testimonialName {
+  font-weight: 600;
+  color: #7d3c03;
+  text-align: right;
+  font-size: 0.75rem;
+}
+
+/* Conteneur pour les boutons */
+.viewMoreContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Bouton flottant */
+.viewMoreButtonFloat {
+  background-color: #ff7a4a;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, 
+              transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  z-index: 5;
+}
+
+.viewMoreButtonFloat:hover {
+  background-color: #e55d22;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.viewLessButton {
+  background-color: #f0f0f0;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.viewLessButton:hover {
+  background-color: #e0e0e0;
+}
+
+.viewMoreButtonIcon {
+  margin-left: 0.5rem;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.viewMoreButtonIconRotated {
+  transform: rotate(180deg);
+}
+
+/* État de chargement */
+.loadingState {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .testimonialsGrid {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .testimonialCard {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* Animation pour l'affichage séquentiel des témoignages */
+.testimonialCardAnimated {
+  animation: fadeInUp 0.5s ease-out forwards;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Indicateur de défilement pour les appareils tactiles */
+@media (hover: none) {
+  .scrollIndicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+    opacity: 0.6;
+    font-size: 0.8rem;
+    color: #666;
+  }
+  
+  .scrollIndicator svg {
+    margin-left: 0.5rem;
+    animation: bounce 1.5s infinite;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}

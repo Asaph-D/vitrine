@@ -64,7 +64,7 @@ const Cart = ({ cart, setCart, isCartOpen, setIsCartOpen, orderPlaced, setOrderP
                         Total: {calculateTotal().toFixed(2)}€
                       </div>
                     </div>
-                    <OrderForm handleSubmitOrder={handleSubmitOrder} />
+                    <OrderForm handleSubmitOrder={handleSubmitOrder} cart={cart} />
                   </div>
                 )}
               </div>

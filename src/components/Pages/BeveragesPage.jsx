@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from '../ProductCard/ProductCard';
-import { fetchProducts } from './ProductsSection/productsData';
+import { fetchPreciseProducts } from './ProductsSection/productsData';
 
 const BeveragesPage = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
         const loadProducts = async () => {
-            const fetchedProducts = await fetchProducts('boisson');
+            const fetchedProducts = await fetchPreciseProducts('boisson');
             setProducts(fetchedProducts);
         };
 

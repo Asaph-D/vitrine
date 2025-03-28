@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductCard from '../ProductCard/ProductCard';
-import { imageUrls } from '../../imageUrls';
+import { fetchProducts } from './ProductsSection/productsData';
 
 const CakesPage = () => {
-    const products = [
-        { id: 1, nom: 'Gâteau au chocolat', description: 'Un délicieux gâteau au chocolat', image: imageUrls.cakes[0] },
-        { id: 2, nom: 'Tarte aux fruits', description: 'Une tarte aux fruits frais', image: imageUrls.cakes[1] },
-        // Ajoutez d'autres produits ici si nécessaire
-    ];
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        const loadProducts = async () => {
+            const fetchedProducts = await fetchProducts('gateau');
+            setProducts(fetchedProducts);
+        };
+
+        loadProducts();
+    }, []);
 
     return (
         <div className="container mx-auto py-16">
@@ -17,11 +22,10 @@ const CakesPage = () => {
             </h1>
             <div className="grid grid-cols-0 md:grid-cols-3 gap-12 mt-12 mb-12">
                 {products.map((product) => (
-                    <ProductCard product={product}/>
+                    <ProductCard key={product.id} product={product} />
                 ))}
             </div>
         </div>
-
     );
 };
 

@@ -30,8 +30,8 @@ const SearchFilterSort = ({
           className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500"
         >
           <option value="ALL">Toutes catégories</option>
-          <option value="cake">Pâtisseries</option>
-          <option value="juice">Boissons</option>
+          <option value="gateau">Pâtisseries</option>
+          <option value="boisson">Boissons</option>
         </select>
       </div>
       <div className="flex items-center gap-2">

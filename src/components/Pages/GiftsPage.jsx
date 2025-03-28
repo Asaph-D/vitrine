@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductCard from '../ProductCard/ProductCard';
-import { imageUrls } from '../../imageUrls';
+import { fetchProducts } from './ProductsSection/productsData';
 
-const BeveragesPage = () => {
-    const products = [
-        { id: 1, nom: 'Café latte', description: 'Un café latte crémeux', image: imageUrls.drinks[0] },
-        { id: 2, nom: 'Thé glacé', description: 'Un thé glacé rafraîchissant', image: imageUrls.drinks[1] },
-        // Ajoutez d'autres produits ici si nécessaire
-    ];
+const GiftsPage = () => {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        const loadProducts = async () => {
+            const fetchedProducts = await fetchProducts('cadeau');
+            setProducts(fetchedProducts);
+        };
+
+        loadProducts();
+    }, []);
 
     return (
         <div className="container mx-auto py-12">
@@ -24,4 +29,4 @@ const BeveragesPage = () => {
     );
 };
 
-export default BeveragesPage;
+export default GiftsPage;

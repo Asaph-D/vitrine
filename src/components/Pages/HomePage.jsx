@@ -1,16 +1,32 @@
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ProductViewerProvider } from '../ProductCard/ProductViewerProvider';
 import ProductCard from '../ProductCard/ProductCard';
 import styles from '../styles/Home.module.css';
 import TestimonialsSection from './Sections/TestimonialsSection';
-import { imageUrls } from '../../imageUrls';
 import useTestimonials from '../../api/useTestimonials';
 import FormModals from '../Forms/FormModals';
 import ServicesSection from './Sections/ServicesSection';
+import { fetchProducts } from './ProductsSection/productsData';
+
+const getRandomProducts = (products, count = 3) => {
+  const shuffledProducts = products.sort(() => 0.5 - Math.random());
+  return shuffledProducts.slice(0, count);
+};
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const [randomProducts, setRandomProducts] = useState([]);
   const { error } = useTestimonials();
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      const fetchedProducts = await fetchProducts();
+      setRandomProducts(getRandomProducts(fetchedProducts));
+    };
+
+    loadProducts();
+  }, []);
 
   if (error) return (
     <div className={styles.errorContainer}>
@@ -23,15 +39,6 @@ const HomePage = () => {
       </button>
     </div>
   );
-
-  const products = [
-    { id: 1, nom: 'Gâteau au chocolat', description: 'Un délicieux gâteau au chocolat', image: imageUrls.cakes[0], prix: 15 },
-    { id: 2, nom: 'Tarte aux fruits', description: 'Une tarte aux fruits frais', image: imageUrls.cakes[1], prix: 12 },
-    { id: 3, nom: 'Café latte', description: 'Un café latte crémeux', image: imageUrls.drinks[0], prix: 5 },
-    { id: 4, nom: 'Thé glacé', description: 'Un thé glacé rafraîchissant', image: imageUrls.drinks[1], prix: 4 },
-    { id: 5, nom: 'Boîte de chocolats', description: 'Une sélection de chocolats fins', image: imageUrls.gifts[0], prix: 20 },
-    { id: 6, nom: 'Panier gourmand', description: 'Un panier rempli de gourmandises', image: imageUrls.gifts[1], prix: 30 },
-  ];
 
   return (
     <div className={styles.pageContainer}>
@@ -67,7 +74,7 @@ const HomePage = () => {
         <section className={styles.productsSection}>
           <h2 className={styles.sectionTitle}>Nos Produits Populaires</h2>
           <div className={styles.productsGrid}>
-            {products.slice(0, 3).map((product) => (
+            {randomProducts.map((product) => (
               <div key={product.id} className={styles.productCardWrapper}>
                 <ProductCard
                   product={product}

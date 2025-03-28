@@ -45,7 +45,7 @@ export const ProductViewerProvider = ({ children }) => {
   };
   const handleViewDetails = () => {
     if (selectedProduct) {
-      navigate(`/product/${selectedProduct.id}`); // Rediriger vers la page de détails du produit
+      navigate(`/products`); // Rediriger vers la page de détails du produit
     }
   };
 

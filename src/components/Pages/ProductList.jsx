@@ -1,14 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import OrderSystem from './ProductsSection/OrderSystem';
 import SearchFilterSort from './ProductsSection/SearchFilterSort';
-import { products } from './ProductsSection/productsData'; // Assurez-vous d'exporter les produits depuis un fichier séparé
+import { fetchProducts } from './ProductsSection/productsData';
 
 const EnhancedProductList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterCategory, setFilterCategory] = useState('ALL');
   const [sortField, setSortField] = useState('nom');
   const [sortDirection, setSortDirection] = useState('asc');
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      const fetchedProducts = await fetchProducts();
+      setProducts(fetchedProducts);
+      setFilteredProducts(fetchedProducts);
+    };
+
+    loadProducts();
+  }, []);
 
   useEffect(() => {
     const result = products
@@ -26,7 +37,7 @@ const EnhancedProductList = () => {
       });
 
     setFilteredProducts(result);
-  }, [searchTerm, filterCategory, sortField, sortDirection]);
+  }, [searchTerm, filterCategory, sortField, sortDirection, products]);
 
   return (
     <div className="p-4 md:p-8">

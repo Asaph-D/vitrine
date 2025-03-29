@@ -6,8 +6,11 @@ import OrderForm from './OrderForm';
 
 const Cart = ({ cart, setCart, isCartOpen, setIsCartOpen, orderPlaced, setOrderPlaced }) => {
   const calculateTotal = () => {
-    return cart.reduce((total, item) => total + (item.prix * item.quantity), 0);
-  };
+    return cart.reduce((total, item) => {
+      const prix = !isNaN(parseFloat(item.prix)) ? parseFloat(item.prix) : 0;
+      return total + (prix * item.quantity);
+    }, 0);
+      };
 
   const handleSubmitOrder = (e) => {
     e.preventDefault();
@@ -56,14 +59,14 @@ const Cart = ({ cart, setCart, isCartOpen, setIsCartOpen, orderPlaced, setOrderP
                   <div>
                     <div className="space-y-2 sm:space-y-4 mb-4 sm:mb-6">
                       {cart.map(item => (
-                        <div 
-                          key={item.id} 
+                        <div
+                          key={item.id}
                           className="bg-gray-50 rounded-lg p-2 sm:p-4 flex items-center space-x-2 sm:space-x-4"
                         >
-                          <img 
-                            src={item.image} 
-                            alt={item.nom} 
-                            className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-md" 
+                          <img
+                            src={item.image}
+                            alt={item.nom}
+                            className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-md"
                           />
                           <div className="flex-grow min-w-0">
                             <p className="font-medium text-xs sm:text-sm text-gray-800 truncate">
@@ -71,14 +74,14 @@ const Cart = ({ cart, setCart, isCartOpen, setIsCartOpen, orderPlaced, setOrderP
                             </p>
                             <div className="flex justify-between items-center mt-1">
                               <p className="text-xs text-gray-500">
-                                {item.quantity} × {item.prix.toFixed(2)}€
+                                {item.quantity} × {(!isNaN(parseFloat(item.prix)) ? parseFloat(item.prix).toFixed(2) : "0.00")}€
                               </p>
                               <p className="font-semibold text-xs sm:text-sm text-gray-700">
-                                {(item.quantity * item.prix).toFixed(2)}€
+                                {(!isNaN(parseFloat(item.prix)) ? (item.quantity * parseFloat(item.prix)).toFixed(2) : "0.00")}€
                               </p>
                             </div>
                           </div>
-                          <button 
+                          <button
                             onClick={() => {
                               const updatedCart = cart.filter(cartItem => cartItem.id !== item.id);
                               setCart(updatedCart);

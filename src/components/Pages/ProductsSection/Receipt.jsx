@@ -71,12 +71,12 @@ const Receipt = ({ customerInfo, cart }) => {
                 <div className="text-center sm:text-left w-full">
                   <p className="font-medium text-gray-800 text-sm sm:text-base">{item.nom}</p>
                   <p className="text-xs text-gray-500">
-                    {item.quantity} × {item.prix.toFixed(2)}€
+                    {item.quantity} × {isNaN(parseFloat(item.prix)) ? "0.00" : parseFloat(item.prix).toFixed(2)}€
                   </p>
                 </div>
               </div>
               <p className="font-semibold text-gray-700 text-sm sm:text-base">
-                {(item.quantity * item.prix).toFixed(2)}€
+                {isNaN(parseFloat(item.prix * item.quantity)) ? "0.00" : (item.quantity * parseFloat(item.prix)).toFixed(2)}€
               </p>
             </div>
           ))}

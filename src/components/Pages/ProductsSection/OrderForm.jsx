@@ -42,7 +42,7 @@ const OrderForm = ({ handleSubmitOrder, cart }) => {
   };
 
   const sendWhatsAppMessage = async () => {
-    const bakeryPhoneNumber = '+237658989324';
+    const bakeryPhoneNumber = '+237690282207';
     const items = cart.map(item => `${item.nom} - ${item.quantity} x ${item.prix}€`).join('\n');
     const total = cart.reduce((sum, item) => sum + (item.prix * item.quantity), 0).toFixed(2);
     const message = `*Pro Dan Cakes* 🤌🏼\n\n` +

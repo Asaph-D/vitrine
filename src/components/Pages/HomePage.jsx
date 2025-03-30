@@ -57,7 +57,7 @@ const HomePage = () => {
           <h1 className={styles.heroTitle}>Pro-Dan-Cakes</h1>
           <p className={styles.heroText}
           style={{
-            fontFamily: "'Brush Script MT', serif",
+            fontFamily: "'Brush Script MT', serif, 'Pacifico', 'Dancing Script', 'Great Vibes', 'Lobster', cursive",
             fontSize: '1.5rem',
             textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
           }}>

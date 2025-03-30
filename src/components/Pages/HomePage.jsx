@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ProductViewerProvider } from '../ProductCard/ProductViewerProvider';
 import ProductCard from '../ProductCard/ProductCard';
+import ProductSkeleton from './ProductSkeleton';
 import styles from '../styles/Home.module.css';
 import TestimonialsSection from './Sections/TestimonialsSection';
 import useTestimonials from '../../api/useTestimonials';
@@ -17,12 +18,20 @@ const getRandomProducts = (products, count = 3) => {
 const HomePage = () => {
   const navigate = useNavigate();
   const [randomProducts, setRandomProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { error } = useTestimonials();
 
   useEffect(() => {
     const loadProducts = async () => {
-      const fetchedProducts = await fetchProducts();
-      setRandomProducts(getRandomProducts(fetchedProducts));
+      setLoading(true);
+      try {
+        const fetchedProducts = await fetchProducts();
+        setRandomProducts(getRandomProducts(fetchedProducts));
+      } catch (error) {
+        console.error("Erreur lors du chargement des produits:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     loadProducts();
@@ -74,13 +83,19 @@ const HomePage = () => {
         <section className={styles.productsSection}>
           <h2 className={styles.sectionTitle}>Nos Produits Populaires</h2>
           <div className={styles.productsGrid}>
-            {randomProducts.map((product) => (
-              <div key={product.id} className={styles.productCardWrapper}>
-                <ProductCard
-                  product={product}
-                />
-              </div>
-            ))}
+            {loading ? (
+              // Afficher les squelettes pendant le chargement
+              Array(3).fill().map((_, index) => (
+                <ProductSkeleton key={`skeleton-${index}`} />
+              ))
+            ) : (
+              // Afficher les produits si disponibles
+              randomProducts.map((product) => (
+                <div key={product.id} className={styles.productCardWrapper}>
+                  <ProductCard product={product} />
+                </div>
+              ))
+            )}
           </div>
           <div className={styles.viewMoreContainer}>
             <button

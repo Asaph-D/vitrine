@@ -29,11 +29,11 @@ const StarRating = ({ rating, setRating }) => {
           </button>
         );
       })}
-      {rating > 0 && (
+      {/* {rating > 0 && (
         <span className="ml-2 text-lg font-medium text-gray-700">
           {rating === 1 ? '1 étoile' : `${rating} étoiles`}
         </span>
-      )}
+      )} */}
     </div>
   );
 };

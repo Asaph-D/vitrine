@@ -4,13 +4,13 @@
 
 body {
   margin: 0;
-  font-family: 'Brush Script MT', serif;
+  font-family: 'Brush Script MT', 'Pacifico', 'Dancing Script', 'Great Vibes', 'Lobster', cursive;
   font-size: 2rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 @media (max-width: 400px) {
   body{

@@ -25,7 +25,7 @@ const EnhancedProductList = () => {
     const result = products
       .filter(product => {
         const matchesSearch = product.nom.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesCategory = filterCategory === 'ALL' || product.category === filterCategory;
+        const matchesCategory = filterCategory === 'ALL' || product.categorie === filterCategory;
         return matchesSearch && matchesCategory;
       })
       .sort((a, b) => {

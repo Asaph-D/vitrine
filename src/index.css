@@ -12,6 +12,9 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
 }
+.heroText{
+  font-family: 'Brush Script MT', 'Pacifico', 'Dancing Script', 'Great Vibes', 'Lobster', cursive;
+}
 @media (max-width: 400px) {
   body{
     font-size: 1.5rem;

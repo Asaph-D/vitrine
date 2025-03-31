@@ -43,11 +43,6 @@ export const ProductViewerProvider = ({ children }) => {
       setTimeout(() => setShowNotification(false), 3000); // Masquer la notification après 3 secondes
     }
   };
-  const handleViewDetails = () => {
-    if (selectedProduct) {
-      navigate(`/products`); // Rediriger vers la page de détails du produit
-    }
-  };
 
   return (
     <ProductViewerContext.Provider value={{ selectedProduct, isVisible, openProduct, handleClose }}>
@@ -102,8 +97,8 @@ export const ProductViewerProvider = ({ children }) => {
                     <button onClick={handleAddToCart} className="px-6 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition-colors duration-200">
                       Ajouter au panier
                     </button>
-                    <button onClick={handleViewDetails} className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-100 transition-colors duration-200">
-                      Voir détails
+                    <button onClick={() => navigate('/products')} className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-100 transition-colors duration-200">
+                      Voir panier
                     </button>
                   </div>
                 </div>

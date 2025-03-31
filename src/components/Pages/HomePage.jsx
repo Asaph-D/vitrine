@@ -9,6 +9,7 @@ import useTestimonials from '../../api/useTestimonials';
 import FormModals from '../Forms/FormModals';
 import ServicesSection from './Sections/ServicesSection';
 import { fetchProducts } from './ProductsSection/productsData';
+import WelcomeMessage from './WelcomeMessage';
 
 const getRandomProducts = (products, count = 3) => {
   const shuffledProducts = products.sort(() => 0.5 - Math.random());
@@ -55,16 +56,7 @@ const HomePage = () => {
       <section className={styles.heroSection}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>Pro-Dan-Cakes</h1>
-          <p className={styles.heroText}
-          style={{
-            fontFamily: "'Brush Script MT', serif, 'Pacifico', 'Dancing Script', 'Great Vibes', 'Lobster', cursive",
-            fontSize: '1.5rem',
-            textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
-          }}>
-            Une pâtisserie artisanale où la passion et le savoir-faire se marient délicieusement.
-            Dans notre atelier, chaque création est une ode à la gourmandise, alliant tradition
-            française et créativité contemporaine.
-          </p>
+          <WelcomeMessage></WelcomeMessage>
           <button
             className={styles.heroButton}
             onClick={() => navigate('/products')}

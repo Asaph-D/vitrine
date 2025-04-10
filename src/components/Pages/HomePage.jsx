@@ -38,17 +38,17 @@ const HomePage = () => {
     loadProducts();
   }, []);
 
-  if (error) return (
-    <div className={styles.errorContainer}>
-      <p>Nous n'avons pas pu charger les avis: {error.message}</p>
-      <button
-        className={styles.retryButton}
-        onClick={() => window.location.reload()}
-      >
-        Réessayer
-      </button>
-    </div>
-  );
+  // if (error) return (
+  //   <div className={styles.errorContainer}>
+  //     <p>Nous n'avons pas pu charger les avis: {error.message}</p>
+  //     <button
+  //       className={styles.retryButton}
+  //       onClick={() => window.location.reload()}
+  //     >
+  //       Réessayer
+  //     </button>
+  //   </div>
+  // );
 
   return (
     <div className={styles.pageContainer}>

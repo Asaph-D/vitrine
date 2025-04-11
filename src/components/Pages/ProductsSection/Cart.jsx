@@ -73,10 +73,10 @@ const Cart = ({ cart, setCart, isCartOpen, setIsCartOpen, orderPlaced, setOrderP
                             </p>
                             <div className="flex justify-between items-center mt-1">
                               <p className="text-xs text-gray-500">
-                                {item.quantity} × {(!isNaN(parseFloat(item.prix)) ? parseFloat(item.prix).toFixed(2) : "0.00")}€
+                                {item.quantity} × {(!isNaN(parseFloat(item.prix)) ? parseFloat(item.prix).toFixed(2) : "0.00")} fcfa
                               </p>
                               <p className="font-semibold text-xs sm:text-sm text-gray-700">
-                                {(!isNaN(parseFloat(item.prix)) ? (item.quantity * parseFloat(item.prix)).toFixed(2) : "0.00")}€
+                                {(!isNaN(parseFloat(item.prix)) ? (item.quantity * parseFloat(item.prix)).toFixed(2) : "0.00")} fcfa
                               </p>
                             </div>
                           </div>
@@ -94,7 +94,7 @@ const Cart = ({ cart, setCart, isCartOpen, setIsCartOpen, orderPlaced, setOrderP
                     </div>
                     <div className="text-right mb-4 sm:mb-6">
                       <div className="text-base sm:text-lg font-bold">
-                        Total: {calculateTotal().toFixed(2)}€
+                        Total: {calculateTotal().toFixed(2)} fcfa
                       </div>
                     </div>
                     <OrderForm handleSubmitOrder={handleSubmitOrder} cart={cart} />

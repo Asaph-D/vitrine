@@ -43,7 +43,7 @@ const OrderForm = ({ handleSubmitOrder, cart }) => {
 
   const sendWhatsAppMessage = async () => {
     const bakeryPhoneNumber = '+237690282207';
-    const items = cart.map(item => `${item.nom} - ${item.quantity} x ${item.prix}€`).join('\n');
+    const items = cart.map(item => `${item.nom} - ${item.quantity} x ${item.prix} fcfa`).join('\n');
     const total = cart.reduce((sum, item) => sum + (item.prix * item.quantity), 0).toFixed(2);
     const message = `*Pro Dan Cakes* 🤌🏼\n\n` +
     `*NOUVELLE COMMANDE* 🎂\n\n` +
@@ -53,9 +53,11 @@ const OrderForm = ({ handleSubmitOrder, cart }) => {
     `   *Tél:* ${customerInfo.phone}\n` +
     `   *Adresse:* ${customerInfo.address}\n\n` +
     `📋 *Détails de la Commande:*\n\n${items}\n\n` +
-    `💰 *TOTAL: ${total}€*\n\n` +
-    `*veuillez joindre l'image de commande que nous vous avons envoyé*\n` +
+    `💰 *TOTAL: ${total} fcfa*\n\n` +
     `*Pro Dan vous dis Merci pour la fidélité*\n\n` +
+    `👇👇👇👇👇👇👇👇👇\n\n`+
+    `*veuillez joindre aussi l'image de \n commande que nous vous avons envoyé\n( l'image recente dans votre galerie )*\n` +
+    `👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻\n\n`+
     `Commande reçue le ${new Date().toLocaleDateString()} à ${new Date().toLocaleTimeString().slice(0, -3)}`;
     const whatsappURL = `https://wa.me/${bakeryPhoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank', 'noopener,noreferrer');

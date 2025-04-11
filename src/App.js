@@ -11,7 +11,6 @@ import GiftsPage from './components/Pages/GiftsPage';
 import NotFoundPage from './components/Pages/NotFoundPage';
 import ProductList from './components/Pages/ProductList';
 import ContactForm from './components/Pages/ContactForm';
-import ImageManager from './components/ProductCard/ImageManager';
 import { ProductViewerProvider } from './components/ProductCard/ProductViewerProvider';
 import { CartProvider } from './components/Pages/ProductsSection/CartContext';
 
@@ -33,7 +32,6 @@ const router = createBrowserRouter([
             { path: "/gifts", element: <GiftsPage /> },
             { path: "/products", element: <ProductList /> },
             { path: "/contact", element: <ContactForm /> },
-            { path: "/upload", element: <ImageManager /> },
             { path: "*", element: <NotFoundPage /> },
         ],
     },

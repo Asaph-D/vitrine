@@ -23,7 +23,7 @@ const ProductSailCard = ({ product }) => {
       <div className="p-4">
         <h3 className="text-xl font-semibold text-gray-800">{product.nom}</h3>
         <div className="flex justify-between items-center mt-4">
-          <span className="text-lg font-bold text-orange-500">{product.prix}€</span>
+          <span className="text-lg font-bold text-orange-500">{product.prix} fcfa</span>
           <button
             onClick={() => addToCart(product)}
             className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded transition-colors flex items-center gap-2"

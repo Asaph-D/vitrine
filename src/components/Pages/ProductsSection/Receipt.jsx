@@ -71,12 +71,12 @@ const Receipt = ({ customerInfo, cart }) => {
                 <div className="text-left">
                   <p className="font-medium text-gray-800 text-sm sm:text-base">{item.nom}</p>
                   <p className="text-xs text-gray-500">
-                    {item.quantity} × {isNaN(parseFloat(item.prix)) ? "0.00" : parseFloat(item.prix).toFixed(2)}€
+                    {item.quantity} × {isNaN(parseFloat(item.prix)) ? "0.00" : parseFloat(item.prix).toFixed(2)} fcfa
                   </p>
                 </div>
               </div>
               <p className="font-semibold text-gray-700 text-sm sm:text-base ml-2 flex-shrink-0">
-                {isNaN(parseFloat(item.prix * item.quantity)) ? "0.00" : (item.quantity * parseFloat(item.prix)).toFixed(2)}€
+                {isNaN(parseFloat(item.prix * item.quantity)) ? "0.00" : (item.quantity * parseFloat(item.prix)).toFixed(2)} fcfa
               </p>
             </div>
           ))}
@@ -88,7 +88,7 @@ const Receipt = ({ customerInfo, cart }) => {
         <div className="flex justify-between items-center">
           <span className="text-base sm:text-lg font-bold text-gray-800">Total</span>
           <span className="text-xl sm:text-2xl font-extrabold text-blue-600">
-            {calculateTotal().toFixed(2)}€
+            {calculateTotal().toFixed(2)} fcfa
           </span>
         </div>
       </section>

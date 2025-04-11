@@ -54,7 +54,7 @@ const OrderForm = ({ handleSubmitOrder, cart }) => {
     `   *Adresse:* ${customerInfo.address}\n\n` +
     `📋 *Détails de la Commande:*\n\n${items}\n\n` +
     `💰 *TOTAL: ${total} fcfa*\n\n` +
-    `*Pro Dan vous dis Merci pour la fidélité*\n\n` +
+    `*Pro Dan vous dis Merci pour la fidélité*\nJoin us https://vitrine-ten.vercel.app/\n\n` +
     `👇👇👇👇👇👇👇👇👇\n\n`+
     `*veuillez joindre aussi l'image de \n commande que nous vous avons envoyé\n( l'image recente dans votre galerie )*\n` +
     `👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻👆🏻\n\n`+

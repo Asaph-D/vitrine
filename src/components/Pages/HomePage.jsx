@@ -4,8 +4,8 @@ import { ProductViewerProvider } from '../ProductCard/ProductViewerProvider';
 import ProductCard from '../ProductCard/ProductCard';
 import ProductSkeleton from './ProductSkeleton';
 import styles from '../styles/Home.module.css';
-import TestimonialsSection from './Sections/TestimonialsSection';
-import useTestimonials from '../../api/useTestimonials';
+// import TestimonialsSection from './Sections/TestimonialsSection';
+// import useTestimonials from '../../api/useTestimonials';
 import FormModals from '../Forms/FormModals';
 import ServicesSection from './Sections/ServicesSection';
 import { fetchProducts } from './ProductsSection/productsData';
@@ -20,7 +20,7 @@ const HomePage = () => {
   const navigate = useNavigate();
   const [randomProducts, setRandomProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { error } = useTestimonials();
+  // const { error } = useTestimonials();
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -100,7 +100,7 @@ const HomePage = () => {
         </section>
       </ProductViewerProvider>
 
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
 
       {/* Call to Action Section */}
       <section className={styles.ctaSection}>
